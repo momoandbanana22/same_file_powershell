@@ -26,7 +26,7 @@ $targetitems | ForEach-Object {
       if ($key -eq "") { # １件しかないハッシュは空文字か？
         # ファイルは１つしかない＝２つ目を登録しようとしている＝その２つのハッシュを比較する必要がある＝１つ目のハッシュを計算する
         $FileItem = $results[$FileSize][$key][0]
-        $FileHash = ($FileItem | Get-FileHash -Algorithm MD5)
+        $FileHash = ($FileItem | Get-FileHash -Algorithm SHA512)
         $FileArrays = (New-Object System.Collections.ArrayList)
         $null = $FileArrays.Add($FileItem)
         
@@ -38,7 +38,7 @@ $targetitems | ForEach-Object {
       }
     }
     # ファイルハッシュ計算済み１件（上のifを通った） or ファイルハッシュ計算済み複数件
-    $FileHash = ($_ | Get-FileHash -Algorithm MD5)
+    $FileHash = ($_ | Get-FileHash -Algorithm SHA512)
     if (! $results[$FileSize].ContainsKey($FileHash.Hash)) { # このファイルハッシュは登録されている？
       # ファイルハッシュ未登録
       $FileArrays = (New-Object System.Collections.ArrayList) # 空の配列
