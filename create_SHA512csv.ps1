@@ -1,10 +1,10 @@
-# ディレクトリリスト
+# SHA512を計算するファイルが格納されているディレクトリのリスト
 $directories = @(
-  "H:\movie"
+  "c:\your\directory"
 )
 
 # CSVファイルのパス
-$outputFile = "H:\filesSHA512.csv"
+$outputFile = "c:\your\diretory2\filesSHA512.csv"
 
 # CSVファイルが存在しない場合、ヘッダーを書き込む
 if (!(Test-Path -Path $outputFile)) {
